@@ -9,6 +9,10 @@
             {
                 "note": "Update tests for refactored `DevUtils`",
                 "pr": 2464
+            },
+            {
+                "note": "Add DydxBridge validation",
+                "pr": 2466
             }
         ]
     },
