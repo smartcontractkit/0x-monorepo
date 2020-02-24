@@ -128,7 +128,7 @@ export class SwapQuoteCalculator {
         opts: CalculateSwapQuoteOpts,
     ): Promise<SwapQuote> {
         // checks if maker asset is ERC721 or ERC20 and taker asset is ERC20
-        if (!isSupportedAssetDataInOrders(prunedOrders)) {
+        if (!utils.isSupportedAssetDataInOrders(prunedOrders)) {
             throw Error(SwapQuoterError.AssetDataUnsupported);
         }
         // since prunedOrders do not have fillState, we will add a buffer of fillable orders to consider that some native are orders are partially filled
@@ -136,9 +136,11 @@ export class SwapQuoteCalculator {
         const slippageBufferAmount = assetFillAmount.multipliedBy(slippagePercentage).integerValue();
         let resultOrders: OptimizedMarketOrder[] = [];
 
-        const firstOrderMakerAssetData = !!prunedOrders[0] ? assetDataUtils.decodeAssetDataOrThrow(prunedOrders[0].makerAssetData) : { assetProxyId: ''};
+        const firstOrderMakerAssetData = !!prunedOrders[0]
+            ? assetDataUtils.decodeAssetDataOrThrow(prunedOrders[0].makerAssetData)
+            : { assetProxyId: '' };
 
-        if (firstOrderMakerAssetData.assetProxyId === constants.PROXY_IDS.ERC721_PROXY_ID ) {
+        if (firstOrderMakerAssetData.assetProxyId === constants.PROXY_IDS.ERC721_PROXY_ID) {
             resultOrders = prunedOrders.map(o => {
                 // HACK: to conform ERC721 orders to the output of market operation utils, assumes complete fillable
                 return {
@@ -458,24 +460,6 @@ export class SwapQuoteCalculator {
             };
         }, breakdown);
     }
-}
-
-function isSupportedAssetDataInOrders(
-    orders: SignedOrder[],
-): boolean {
-    const firstOrderMakerAssetData = !!orders[0] ? assetDataUtils.decodeAssetDataOrThrow(orders[0].makerAssetData) : { assetProxyId: '' };
-    return orders.every(o => {
-        const takerAssetData = assetDataUtils.decodeAssetDataOrThrow(o.takerAssetData);
-        const makerAssetData = assetDataUtils.decodeAssetDataOrThrow(o.makerAssetData);
-        return (
-            (makerAssetData.assetProxyId === constants.PROXY_IDS.ERC20_PROXY_ID
-                || makerAssetData.assetProxyId === constants.PROXY_IDS.ERC721_PROXY_ID)
-            ) &&
-            (
-                takerAssetData.assetProxyId === constants.PROXY_IDS.ERC20_PROXY_ID
-            ) &&
-            firstOrderMakerAssetData.assetProxyId === makerAssetData.assetProxyId; // checks that all native order maker assets are of the same type
-    });
 }
 
 function getTakerAssetAmountBreakDown(
