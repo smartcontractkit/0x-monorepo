@@ -4945,6 +4945,11 @@ commander@2.18.0:
   version "2.18.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.18.0.tgz#2bf063ddee7c7891176981a2cc798e5754bc6970"
 
+commander@3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-3.0.2.tgz#6837c3fb677ad9933d1cfba42dd14d5117d6b39e"
+  integrity sha512-Gar0ASD4BDyKC4hl4DwHqDrmvjoxWKZigVnAbn5H1owvm4CxCPdb0HQDehwNYMJpla5+M2tPmPARzhtYuwpHow==
+
 commander@^2.15.1:
   version "2.19.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.19.0.tgz#f6198aa84e5b83c46054b94ddedbfed5ee9ff12a"
@@ -10375,6 +10380,11 @@ js-sha3@0.5.7, js-sha3@^0.5.7:
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.5.7.tgz#0d4ffd8002d5333aabaf4a23eed2f6374c9f28e7"
 
+js-sha3@0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.8.0.tgz#b9b7a5da73afad7dedd0f8c463954cbde6818840"
+  integrity sha512-gF1cRrHhIzNfToc802P800N8PpXS+evLLXfsVpowqmAFR9uwbi89WvXg2QspOmXL8QL86J4T1EpFu+yUkwJY3Q==
+
 js-sha3@^0.3.1:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/js-sha3/-/js-sha3-0.3.1.tgz#86122802142f0828502a0d1dee1d95e253bb0243"
@@ -15211,6 +15221,20 @@ solc@^0.5.5:
     semver "^5.5.0"
     tmp "0.0.33"
     yargs "^11.0.0"
+
+solc@^0.6.6:
+  version "0.6.6"
+  resolved "https://registry.yarnpkg.com/solc/-/solc-0.6.6.tgz#0d4b9c2e7105dd6015583f5e1c5ba6a35861ea71"
+  integrity sha512-p0IO/1fRaHWKN+qR+mUivpwnBpFYD8EoFAzT8VL4lmllNwsyEO7TJJAc2QK0XUeWOYOT92NWKhDNNNLTVbHShA==
+  dependencies:
+    command-exists "^1.2.8"
+    commander "3.0.2"
+    fs-extra "^0.30.0"
+    js-sha3 "0.8.0"
+    memorystream "^0.3.1"
+    require-from-string "^2.0.0"
+    semver "^5.5.0"
+    tmp "0.0.33"
 
 solhint@^1.4.1:
   version "1.5.0"
