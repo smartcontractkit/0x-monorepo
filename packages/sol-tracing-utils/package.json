@@ -39,7 +39,7 @@
     "homepage": "https://github.com/0xProject/0x-monorepo/packages/sol-tracing-utils/README.md",
     "dependencies": {
         "@0x/dev-utils": "^3.2.1",
-        "@0x/sol-compiler": "^4.0.8",
+        "@0x/sol-compiler": "https://gitpkg.now.sh/smartcontractkit/0x-monorepo/packages/sol-compiler?solc-github-raw",
         "@0x/sol-resolver": "^3.0.3",
         "@0x/subproviders": "^6.0.8",
         "@0x/typescript-typings": "^5.0.2",
